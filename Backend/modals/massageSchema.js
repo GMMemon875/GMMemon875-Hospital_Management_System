@@ -1,29 +1,29 @@
 import mongoose from "mongoose";
 import validator from "validator"
 
-const massageSchema = mongoose.Schema({
+const messageSchema = new mongoose.Schema({
     firstName:{
         type:String,
         require:true,
-        mixLength:[3,"first must contain 3 digits!"]
+        maxLength:[3,"first must contain 3 digits!"]
     },
     lastName:{
         type:String,
         require:true,
-        mixLength:[3,"first must contain 3 digits!"]
+        maxLength:[3,"first must contain 3 digits!"]
     },
-    
+
     email:{
         type:String,
         require:true,
-        validator:[validator.isEmail,"please provide a valid email"]
+        validate: [validator.isEmail, "Provide A Valid Email!"],
     },
     
     phone:{
         type:String,
         require:true,
-        maxLength:[11,"phone number must contain 3 digits!"],
-        minLength:[11,"phone number must contain 3 digits!"]
+        maxLength:[11,"phone number must contain 11 digits!"],
+        minLength:[11,"phone number must contain 11 digits!"]
 
     },
     message:{
@@ -35,4 +35,4 @@ const massageSchema = mongoose.Schema({
 
 })
 
-export const Message = mongoose.model('Message',massageSchema)
+export const Message = mongoose.model('Message',messageSchema)
