@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload"
 import database from "./DetaBase/dataBase.js"
 import messageRouter from './router/messageRouter.js'
 import {errorMiddleware} from "./middlewere/errorMiddlewere.js"
+import userRouter from "./router/userRouter.js"
 
 
 const app = express()
@@ -30,6 +31,7 @@ app.use(fileUpload({
 }));
 
 app.use("/api/v1/message",messageRouter)
+app.use("/api/v1/user",userRouter)
 
 database()
 
