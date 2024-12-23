@@ -1,7 +1,7 @@
 import {catchAsyncErrors} from "../middlewere/CatchAsynicError.js"
 import ErrorHandler from "../middlewere/errorMiddlewere.js"
 import { User } from "../modals/userSchema.js"
-
+import {genrateToken} from "../utils/jwtToken.js"
 
 
 export const patientRegister = catchAsyncErrors(async(req,res,next) =>{
@@ -15,12 +15,8 @@ export const patientRegister = catchAsyncErrors(async(req,res,next) =>{
     if(user){
         return await next(new ErrorHandler("User Already Register"))
     }
-    user = await User.create({firstName,lastName,email,phone,nic,dob,gender,role,password})
-    res.status(200).json({
-        success:true,
-        message:"user Register successfully"
-    })
-
+    user = await User.create({firstName,lastName,email,phone,nic,dob,gender,role,password});
+    genrateToken(user,"user Register successfully",200,res)
 })
 
 
@@ -44,9 +40,47 @@ export const Login = catchAsyncErrors(async(req,res,next) => {
     if(role !== user.role){
         return next(new ErrorHandler("User with this role is not Found"))
     }
-    res.status(200).json({
-        success:true,
-        message:"Login successfully"
-    })
-
+    genrateToken(user,"user Login successfully",200,res)
 })
+
+
+export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
+    const { firstName, lastName, email, phone, nic, dob, gender, password } =
+      req.body;
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !phone ||
+      !nic ||
+      !dob ||
+      !gender ||
+      !password
+    ) {
+      return next(new ErrorHandler("Please Fill Full Form!", 400));
+    }
+  
+    const isRegistered = await User.findOne({ email });
+    if (isRegistered) {
+      return next(new ErrorHandler(`${isRegistered.role} With This Email Already Exists!`, 400));
+    }
+  
+    const admin = await User.create({
+      firstName,
+      lastName,
+      email,
+      phone,
+      nic,
+      dob,
+      gender,
+      password,
+      role: "Admin",
+    });
+    res.status(200).json({
+      success: true,
+      message: "New Admin Registered",
+      admin,
+    });
+  });
+
+ 
