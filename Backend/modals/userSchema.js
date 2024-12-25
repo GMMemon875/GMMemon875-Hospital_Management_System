@@ -1,7 +1,4 @@
- 
-
-
-import mongoose from "mongoose";
+ import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -60,10 +57,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null,
     },
-    docAvator: {
-        public_id: { type: String, default: null },
-        url: { type: String, default: null },
-    },
+    docAvatar: {
+        public_id: String,
+        url: String,
+      },
 });
 
 // Hash password before saving
