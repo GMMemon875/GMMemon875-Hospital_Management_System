@@ -118,4 +118,19 @@ export const updateAppointmentStatus = catchAsyncErrors(async(req,res,next)=>{
 
 })
 
+
+export const deleteAppointment = catchAsyncErrors(async(req,res,next)=>{
+    const {id} =req.params
+    let appointment = await Appointment.findById(id)
+    if(!appointment){
+        return next(new ErrorHandler("Appointment Is Not Found!",400))
+    }
+    await appointment.deleteOne()
+    res.status(200).json({
+        success:true,
+        message:"Appointment Delete Successfully"
+    })
+
+})
+
  

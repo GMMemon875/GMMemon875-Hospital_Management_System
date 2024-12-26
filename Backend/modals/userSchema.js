@@ -68,17 +68,17 @@ userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         next();
     }
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10); // password jo aya he us ko hash man convert karni ke lei bcrypt ka use 
 });
 
 // Compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+userSchema.methods.comparePassword = async function (enteredPassword) {        // jo hash password aya he us ko jo fer se Passowrd Enter hoa he us dono ko Compair karni ke lei bcrpt ek methord provide karta he compairPassowrd
     return await bcrypt.compare(enteredPassword, this.password);
 };
 
 // Generate JWT
-userSchema.methods.generateJsonWebToken = function () {
-    return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+userSchema.methods.generateJsonWebToken = function () {         // uper wale condition true hogie to us ka jwt token genrate hoga 
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {  // us ka Token User ke id per Genrate hoga Unique ID per per us JWT_SECRET_KEY matlb token hm  JWT_SECRET_KEY save kar de ge our us ko .env men rakhen ke Context APi ke Tarah hm apni peroject men kahan be use kar sakte hen 
         expiresIn: process.env.JWT_EXPIRES,
     });
 };
