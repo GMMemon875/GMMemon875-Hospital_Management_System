@@ -13,3 +13,15 @@ import ErrorHandler from "../middlewere/errorMiddlewere.js"
         massage:"form create successfully"
     })
  })
+
+
+ 
+
+export const getAllMessages = catchAsyncErrors(async(req,res,next)=>{
+    const Messages = await Message.find()
+    res.status(200).json({
+      success:true,
+      Messages,
+    })
+  })
+  

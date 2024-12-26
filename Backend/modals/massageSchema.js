@@ -5,12 +5,12 @@ const messageSchema = new mongoose.Schema({
     firstName:{
         type:String,
         require:true,
-        maxLength:[3,"first must contain 3 digits!"]
+        minLength:[3,"first Name must contain 3 digits!"]
     },
     lastName:{
         type:String,
         require:true,
-        maxLength:[3,"first must contain 3 digits!"]
+        minLength:[2,"Last Name must contain 2 digits!"]
     },
 
     email:{

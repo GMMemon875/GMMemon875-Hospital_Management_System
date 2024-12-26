@@ -3,6 +3,7 @@ import ErrorHandler from "../middlewere/errorMiddlewere.js"
 import { User } from "../modals/userSchema.js"
 import {genrateToken} from "../utils/jwtToken.js"
 import cloudinary from "cloudinary"
+ 
 
 
 export const patientRegister = catchAsyncErrors(async(req,res,next) =>{
@@ -206,5 +207,5 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
   });
 });  
 
-
+ 
 
