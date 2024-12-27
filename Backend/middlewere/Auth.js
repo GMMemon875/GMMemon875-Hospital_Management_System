@@ -1,4 +1,4 @@
-// DASHBOARD ADMIN ATHANTICATION
+// DASHBOARD ADMIN ATHANTICATION AND AUTHORAIETION
 import  {catchAsyncErrors}  from "./CatchAsynicError.js";
 import ErrorHandler from "./errorMiddlewere.js";
 import jwt from "jsonwebtoken"

@@ -8,8 +8,8 @@ import cloudinary from "cloudinary"
 
 export const patientRegister = catchAsyncErrors(async(req,res,next) =>{
 
-    const {firstName,lastName,email,phone,nic,dob,gender,role,password} = req.body
-    if (!firstName|| !lastName|| !email|| !phone|| !nic|| !dob|| !gender|| !role|| !password){
+    const {firstName,lastName,email,phone,nic,dob,gender,role,password} = req.body      // get all input feilds
+    if (!firstName|| !lastName|| !email|| !phone|| !nic|| !dob|| !gender|| !role|| !password){  
         return next(new ErrorHandler("please fill full form",400))
     }
 

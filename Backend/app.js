@@ -1,11 +1,11 @@
 import express  from "express"
-import {config} from "dotenv"
-import cors from "cors"
-import cookieParser from "cookie-parser"
-import fileUpload from "express-fileupload";
+import {config} from "dotenv"                // dotenv pkg ko download karni ke bad import keya ke hm secret file ko .env men rakh sakhe 
+import cors from "cors"                      // frontend ke URL ko read karni ke lei hm cors ka istemal karte hen
+import cookieParser from "cookie-parser"      // apni cookies ko store karni ke lei
+import fileUpload from "express-fileupload";  // image ya Avatar ko send karni ke lei  
 import database from "./DetaBase/dataBase.js"
 import messageRouter from './router/messageRouter.js'
-import {errorMiddleware} from "./middlewere/errorMiddlewere.js"
+import {errorMiddleware} from "./middlewere/errorMiddlewere.js"      
 import userRouter from "./router/userRouter.js"
 import  appointment  from "./router/appointmentRouter.js"
  
@@ -16,7 +16,7 @@ config({path:"./Config/config.env"})
  
 app.use(cors({
     origin:[process.env.FRONTEND_URL,process.env.DASHBOARD_URL],
-    methods:["GET","POST","PUT","DELETE"],
+    methods:["GET","POST","PUT","DELETE"],    //PUT update karni ke lei 
     credentials:true
     
 }))

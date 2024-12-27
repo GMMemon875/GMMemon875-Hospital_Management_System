@@ -65,7 +65,7 @@ const userSchema = new mongoose.Schema({
 
 // Hash password before saving
 userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) {
+    if (!this.isModified("password")) {        
         next();
     }
     this.password = await bcrypt.hash(this.password, 10); // password jo aya he us ko hash man convert karni ke lei bcrypt ka use 
