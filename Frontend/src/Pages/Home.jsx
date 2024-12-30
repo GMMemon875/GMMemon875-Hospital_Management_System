@@ -11,7 +11,7 @@ const Home = () => {
         title={
           "well come to GM Madical institute | your Trested healthCare Provider "
         }
-        imageUrl={"./hero.png"}
+        imageUrl={"./fling.png"}
       />
       <Biography imageUrl={"about.png"} />
       <Department />

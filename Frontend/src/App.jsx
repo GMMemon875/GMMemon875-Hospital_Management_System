@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Appointment from "./Pages/Appointment";
@@ -8,11 +8,13 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./componants/NaveBar";
 
 const App = () => {
   return (
     <>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/appointment" element={<Appointment />} />
