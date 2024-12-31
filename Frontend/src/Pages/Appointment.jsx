@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import AppointmentForm from "../componants/AppointmentForm";
+import Hero from "../componants/Hero";
 
 const Appointment = () => {
   return (
-    <div>Appointment</div>
-  )
-}
+    <>
+      <Hero title={"Gm.Cear Hospital "} imageUrl={"./signin.png"} />
 
-export default Appointment
+      <AppointmentForm />
+    </>
+  );
+};
+
+export default Appointment;
