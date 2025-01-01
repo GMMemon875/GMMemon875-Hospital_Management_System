@@ -5,7 +5,7 @@ import Hero from "../componants/Hero";
 const Appointment = () => {
   return (
     <>
-      <Hero title={"Gm.Cear Hospital "} imageUrl={"./signin.png"} />
+      <Hero title={"GMCear Hospital "} imageUrl={"./signin.png"} />
 
       <AppointmentForm />
     </>

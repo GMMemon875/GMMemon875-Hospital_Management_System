@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  return <div>App</div>;
+  return <h1>App</h1>;
 };
 
 export default App;
