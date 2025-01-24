@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./componanats/Dashboard";
 import Login from "./componanats/Login";
@@ -6,6 +7,7 @@ import Message from "./componanats/Message";
 import Doctors from "./componanats/Doctors";
 import AddnewAdmin from "./componanats/AddnewAdmin";
 import AddnewDoctor from "./componanats/AddnewDoctor";
+import Sidebar from "./componanats/Sidebar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Context } from "./main";
@@ -32,13 +34,14 @@ const App = () => {
 
   return (
     <Router>
+      <Sidebar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/message" element={<Message />} />
+        <Route path="/messages" element={<Message />} />
         <Route path="/doctors" element={<Doctors />} />
-        <Route path="/add" element={<AddnewAdmin />} />
-        <Route path="/AddnewDoctor" element={<AddnewDoctor />} />
+        <Route path="/admin/addnew" element={<AddnewAdmin />} />
+        <Route path="/doctor/addnew" element={<AddnewDoctor />} />
       </Routes>
       <ToastContainer position="top-center" />
     </Router>
