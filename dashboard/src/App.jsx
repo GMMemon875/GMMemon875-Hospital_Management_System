@@ -30,7 +30,8 @@ const App = () => {
         setUser(false);
       }
     };
-  }, [isAuthenticated]);
+    fatchData();
+  }, []);
 
   return (
     <Router>

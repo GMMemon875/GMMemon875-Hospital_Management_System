@@ -5,11 +5,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
   const navigateTo = useNavigate();
 
@@ -19,7 +19,7 @@ const Login = () => {
       await axios
         .post(
           "http://localhost:4000/api/v1/user/login",
-          { email, password, confirmPassword, role: "Patient" },
+          { email, password, confirmPassword, role: "Admin" },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
@@ -78,3 +78,11 @@ const Login = () => {
 };
 
 export default Login;
+
+// import React from "react";
+
+// const Login = () => {
+//   return <div>Login</div>;
+// };
+
+// export default Login;
