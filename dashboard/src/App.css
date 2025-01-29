@@ -511,6 +511,7 @@ body {
 }
 .add-doctor-form form .first-wrapper div:first-child {
   flex: 1;
+  display: flow;
 }
 .add-doctor-form form .first-wrapper div:first-child img {
   width: 100%;
