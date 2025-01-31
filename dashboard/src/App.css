@@ -42,15 +42,16 @@ body {
   }
 }
 .form-title {
-  font-size: 1.1rem;
+  font-size: 1.75rem;
   color: #111;
   margin-bottom: 30px;
 }
 .form-component {
-  padding-top: 80px;
+  padding-top: 40px;
   padding-bottom: 60px;
   min-height: 100vh;
   background: #e5e5e5;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -58,7 +59,7 @@ body {
 }
 .form-component h2 {
   color: gray;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   margin-bottom: 30px;
 }
 .form-component h4 {
@@ -76,7 +77,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 20px;
+  width: 550px;
 }
 .add-admin-form form {
   width: 100%;
@@ -95,7 +96,7 @@ body {
 .form-component form select,
 .form-component form textarea {
   flex: 1;
-  font-size: 18px;
+  font-size: 24px;
   padding: 10px 10px 10px 40px;
   border-radius: 7px;
   border: 1px solid gray;
@@ -107,7 +108,7 @@ body {
   width: fit-content;
   border: none;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 24px;
   margin-bottom: 30px;
   background: linear-gradient(140deg, #9083d5, #271776ca);
 }
@@ -511,7 +512,6 @@ body {
 }
 .add-doctor-form form .first-wrapper div:first-child {
   flex: 1;
-  display: flow;
 }
 .add-doctor-form form .first-wrapper div:first-child img {
   width: 100%;
