@@ -3,6 +3,7 @@ import { Context } from "../main";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 const Doctors = () => {
   const [Doctors, setDoctors] = useState([]); // doctors data ko store karni ke lei
@@ -52,7 +53,7 @@ const Doctors = () => {
                         Gender:<span>{element.gender}</span>
                       </p>
                       <p>
-                        DOB:<span>{element.dob}</span>
+                        DOB:<span>{element.dob.substring(0, 10)}</span>
                       </p>
                       <p>
                         NIC:<span>{element.nic}</span>

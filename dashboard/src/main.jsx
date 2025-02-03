@@ -43,7 +43,7 @@ const AppWrapper = () => {
 
   // State to track user data
   const [user, setUser] = useState({});
-
+  console.log(user);
   return (
     // Provide global state values and functions to all components
     <Context.Provider
