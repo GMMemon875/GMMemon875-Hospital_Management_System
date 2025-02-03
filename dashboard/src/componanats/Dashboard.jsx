@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../main";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { GoCheckCircleFill } from "react-icons/go";
+import { AiFillCloseCircle } from "react-icons/ai";
 const Dashboard = () => {
   const { isAuthenticated, user } = useContext(Context);
   const [appointment, setAppointment] = useState([]);
@@ -42,6 +45,26 @@ const Dashboard = () => {
     };
     fatchData();
   }, []);
+
+  const handleUpdateStatus = async (appointmentid, status) => {
+    try {
+      const { data } = await axios.put(
+        `http://localhost:4000/api/v1/appointment/update/${appointmentid}`,
+        { status },
+        { withCredentials: true }
+      );
+      setAppointment((prevappointment) =>
+        prevappointment.map((appointment) =>
+          appointment._id === appointmentid
+            ? { ...appointment, status }
+            : appointment
+        )
+      );
+      toast.success(data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
 
   if (!isAuthenticated) {
     return <Navigate to={"/login"} />;
@@ -104,25 +127,34 @@ const Dashboard = () => {
                       <td>
                         <select
                           className={
-                            appointment.status === "pending"
+                            appointment.status === "Pending"
                               ? "value-pending"
-                              : appointment.status === "rejected"
+                              : appointment.status === "Rejected"
                               ? "value-rejected"
                               : "value-accepted"
                           }
                           value={appointment.status}
-                          onChange={() => {}}
+                          onChange={(e) =>
+                            handleUpdateStatus(appointment._id, e.target.value)
+                          }
                         >
-                          <option value="pending" className="value-pending">
+                          <option value="Pending" className="value-pending">
                             Pending
                           </option>
-                          <option value="rejected" className="value-rejected">
+                          <option value="Rejected" className="value-rejected">
                             Recjected
                           </option>
                           <option value="Accepted" className="value-accepted">
                             Accepted
                           </option>
                         </select>
+                      </td>
+                      <td>
+                        {appointment.hasVisited === true ? (
+                          <GoCheckCircleFill className="green" />
+                        ) : (
+                          <AiFillCloseCircle className="red" />
+                        )}
                       </td>
                     </tr>
                   );
