@@ -28,6 +28,7 @@ const Login = () => {
         .then((res) => {
           toast.success(res.data.message);
           setIsAuthenticated(true);
+          setAdmin(res.data.user);
           navigateTo("/");
           setEmail("");
           setPassword("");
@@ -78,11 +79,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// import React from "react";
-
-// const Login = () => {
-//   return <div>Login</div>;
-// };
-
-// export default Login;

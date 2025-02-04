@@ -15,7 +15,10 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const App = () => {
-  const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
+  const contextValue = useContext(Context);
+  console.log(contextValue);
+  const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
+    useContext(Context);
   useEffect(() => {
     const fatchData = async () => {
       try {
@@ -24,10 +27,10 @@ const App = () => {
           { withCredentials: true }
         );
         setIsAuthenticated(true);
-        setUser(true);
+        setAdmin(response.data.user);
       } catch (error) {
         setIsAuthenticated(false);
-        setUser(false);
+        setAdmin({});
       }
     };
     fatchData();

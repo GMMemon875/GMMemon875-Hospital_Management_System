@@ -14,7 +14,7 @@ const Message = () => {
           `http://localhost:4000/api/v1/message/getall`,
           { withCredentials: true }
         );
-        console.log(data);
+
         setMessages(data.Messages);
       } catch (error) {
         console.log("Error ", error);

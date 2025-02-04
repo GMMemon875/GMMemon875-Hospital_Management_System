@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
 const Dashboard = () => {
-  const { isAuthenticated, user } = useContext(Context);
+  const { isAuthenticated, admin } = useContext(Context);
   const [appointment, setAppointment] = useState([]);
   useEffect(() => {
     const fatchAppointment = async () => {
@@ -16,7 +16,7 @@ const Dashboard = () => {
           { withCredentials: true }
         );
         // console.log(data.appointments);
-        console.log(user.firstName);
+        // console.log(user.firstName);
         setAppointment(data.appointments);
       } catch (error) {
         setAppointment({});
@@ -37,7 +37,7 @@ const Dashboard = () => {
             withCredentials: true,
           }
         );
-        console.log(data.doctors);
+        // console.log(data.doctors);
         setDoctors(data.doctors);
       } catch (error) {
         toast.error(error.response.data.message);
@@ -76,10 +76,10 @@ const Dashboard = () => {
         <div className="banner">
           <div className="firstBox">
             <img src="/doc.png" alt="DocImg" />
-            <div className="contant">
+            <div className="content">
               <div>
                 <p>Hello ,</p>
-                <h5>{user && `${user.firstName},${user.lastName}`}</h5>
+                <h5>{admin && `${admin.firstName},${admin.lastName}`}</h5>
               </div>
 
               <p>

@@ -3,7 +3,6 @@ import { Context } from "../main";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
-import Dashboard from "./Dashboard";
 
 const Doctors = () => {
   const [Doctors, setDoctors] = useState([]); // doctors data ko store karni ke lei
@@ -18,7 +17,7 @@ const Doctors = () => {
             withCredentials: true,
           }
         );
-        console.log(data.doctors);
+
         setDoctors(data.doctors);
       } catch (error) {
         toast.error(error.response.data.message);
