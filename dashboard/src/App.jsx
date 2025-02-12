@@ -28,6 +28,7 @@ const App = () => {
         );
         setIsAuthenticated(true);
         setAdmin(response.data.user);
+        console.log(response.data.user);
       } catch (error) {
         setIsAuthenticated(false);
         setAdmin({});

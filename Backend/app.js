@@ -3,14 +3,14 @@ import { config } from "dotenv"; // dotenv pkg ko download karni ke bad import k
 import cors from "cors"; // frontend ke URL ko read karni ke lei hm cors ka istemal karte hen
 import cookieParser from "cookie-parser"; // apni cookies ko store karni ke lei
 import fileUpload from "express-fileupload"; // image ya Avatar ko send karni ke lei
-import database from "./DetaBase/dataBase.js";
+import database from "./DetaBase/dataBase.js"; // database
 import messageRouter from "./router/messageRouter.js";
-import { errorMiddleware } from "./middlewere/errorMiddlewere.js";
+import { errorMiddleware } from "./middlewere/errorMiddlewere.js"; // error mmiddlewere matlb ye response and req ke bech men kam karega
 import userRouter from "./router/userRouter.js";
 import appointment from "./router/appointmentRouter.js";
 
 const app = express();
-config({ path: "./Config/config.env" });
+config({ path: "./Config/config.env" });     
 
 app.use(
   cors({
@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-app.use(cookieParser());
+app.use(cookieParser()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
