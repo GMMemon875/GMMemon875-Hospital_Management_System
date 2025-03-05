@@ -4,6 +4,7 @@ import { Appointment } from "../modals/appointmentSchema.js";
 import { User } from "../modals/userSchema.js";
 
 export const postAppointment = catchAsyncErrors(async (req, res, next) => {
+  // Postappointment middlewere function
   const {
     firstName,
     lastName,
@@ -18,9 +19,10 @@ export const postAppointment = catchAsyncErrors(async (req, res, next) => {
     doctor_lastName,
     hasVisited,
     address,
-  } = req.body;
+  } = req.body; // Appointment Post karni ke lei ye sare filds input karnen wo req,body men aa jaie gen
 
   if (
+    // koie be fild missing hoie
     !firstName ||
     !lastName ||
     !email ||
@@ -34,7 +36,7 @@ export const postAppointment = catchAsyncErrors(async (req, res, next) => {
     !doctor_lastName ||
     !address
   ) {
-    return next(new ErrorHandler("please fill full form! ", 400));
+    return next(new ErrorHandler("please fill full form! ", 400)); // koie be fild missing hoie to ye error thero karoo
   }
 
   // ke agr koie doctore ko find karna dataBase se unique name
@@ -45,12 +47,15 @@ export const postAppointment = catchAsyncErrors(async (req, res, next) => {
     role: "Doctor", // us ka role Doctor he
     doctorDepartment: department, // us ka department same he jo tm ni frontend se bejha he
   });
-  console.log(isConflict, doctor_firstName, doctor_lastName, department);
+  // console.log(isConflict, doctor_firstName, doctor_lastName, department);
   if (isConflict.length === 0) {
-    return next(new ErrorHandler("Doctor Not Found!", 400));
+    // ke agr is Conflict.length men koie data nhe he === 0 he
+    return next(new ErrorHandler("Doctor Not Found!", 400)); // to ye code chalauo
   }
   if (isConflict.length > 1) {
+    // ke agr isConlit.length > 1 it men doctor he
     return next(
+      // retrun ye karoo
       new ErrorHandler(
         "Doctore Conflict! so Please Contact To hostpital Management and Get Appointment",
         400
